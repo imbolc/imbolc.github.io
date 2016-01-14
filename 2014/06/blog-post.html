@@ -15,15 +15,34 @@
             
 <h1>Настроение</h1>
 <div>
-    <p>Текущий абсолютный уровень успешности в по той или иной шкале,
+    <div>
+        <p>Текущий абсолютный уровень успешности в по той или иной шкале,
 в той или иной деятельности практически не влияет на настроение.
 Намного сильнее влияет динамика изменения этого самого уровня.
 Это одна из причин, почему идеи типа "получу то-то и буду счастливым" зачастую не срабатывают.</p>
 
+    </div>
+
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    var url = 'http://imbolc.name/2014/06/blog-post.html';
+    this.page.url = url;
+    this.page.identifier = url;
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//imbolc.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 
         </div>
 
-        <script src="/js/mui.min.js?v=963de"></script>
+        
+        
     </body>
 </html>

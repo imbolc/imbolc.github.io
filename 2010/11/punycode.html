@@ -15,7 +15,8 @@
             
 <h1>Домен .рф в конфигах (punycode, idna)</h1>
 <div>
-    <p>Для того, чтобы прописать кириллический домен (например, .рф)
+    <div>
+        <p>Для того, чтобы прописать кириллический домен (например, .рф)
 в конфигах (bind, nginx, apache, etc..)
 его нужно преобразовать в punycode. Сделать это можно <a href="http://www.reg.ru/whois/punycode">тут</a>.</p>
 <p>На python pynicode, а точнее idna перекодировка осуществляется штатными средствами:</p>
@@ -25,10 +26,28 @@
 домен.рф
 </code></pre>
 
+    </div>
+
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    var url = 'http://imbolc.name/2010/11/punycode.html';
+    this.page.url = url;
+    this.page.identifier = url;
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//imbolc.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 </div>
 
         </div>
 
-        <script src="/js/mui.min.js?v=963de"></script>
+        
+        
     </body>
 </html>
