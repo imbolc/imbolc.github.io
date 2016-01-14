@@ -2,19 +2,17 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 20px auto;
     width: 95%;
-    font-size: 70%;
+    font-size: 100%;
     line-height: 1.4;
 }
 @media (min-width: 400px) {
-    body { width: 90%; font-size: 75%; }
-    .content { width: 90%; }
+    body { width: 90% }
 }
 @media (min-width: 700px) {
-    body { width: 80%; font-size: 90%; }
-    .content { width: 80%; }
+    body { width: 80%; }
 }
 @media (min-width: 850px) {
-    body { width: 70%; font-size: 100%; }
+    body { width: 70%; }
 }
 @media (min-width: 1000px) {
     body { width: 60%; font-size: 110%; }
