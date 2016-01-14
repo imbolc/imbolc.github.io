@@ -6,16 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Python + YAML</title>
         
-        <link href="/css/mui.min.css?v=f60f7" rel="stylesheet">
+        <link href="/style.css?v=666ff" rel="stylesheet">
         <link rel="alternate" type="application/rss+xml" href="/feeds/posts/default" title="imbolc.name">
     </head>
     <body>
-        <div class="mui-container">
+        <div>
             
-<h1>Python + YAML</h1>
-<div>
-    <div>
-        <h2>Зачем это, собственно?</h2>
+<div class="post">
+    <h1>
+        Python + YAML
+    </h1>
+    <h2>Зачем это, собственно?</h2>
 <p>Для конфигов. Писать конфиги на питоне и импортить, на мой взгляд, лучший вариант. Но это не всегда удобно. Типичный пример: нужно загрузить конфиг из родительской папки. Вариант решения - не импортить, хранить в текстовом формате, читать и парсить.
 Конечно, хочется парсить автоматом. Да ещё, чтобы сам конфиг был читабельным. Варианты:</p>
 <ul>
@@ -120,9 +121,13 @@ langs:
 }
 </code></pre>
 
+    <div class="signature">
+        22.12.2009
+        
     </div>
+</div>
 
-    <div id="disqus_thread"></div>
+<div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
     var url = 'http://imbolc.name/2009/12/python-yaml.html';
@@ -137,11 +142,9 @@ var disqus_config = function () {
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
 
         </div>
 
-        
         <script type="text/javascript">
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
