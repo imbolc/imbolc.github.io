@@ -51,3 +51,7 @@ ul.unstyled {
     .post pre {
         white-space: pre-wrap;
     }
+    .post blockquote {
+        font-size: 90%;
+        font-style: italic;
+    }

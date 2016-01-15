@@ -6,22 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Python + YAML</title>
         <link rel="shortcut icon" href="/favicon.ico?v=a9827">
-        <link href="/style.css?v=0e150" rel="stylesheet">
+        <link href="/style.css?v=7fcb6" rel="stylesheet">
         <link rel="alternate" type="application/rss+xml" href="/feeds/posts/default" title="imbolc.name">
     </head>
     <body>
         <div>
             <a href="/">home</a>
             <a style="float: right" href="/feeds/posts/default">rss</a>
+        </div>
+
         <div>
             
-<div class="post">
-    <h1>
-        Python + YAML
-    </h1>
-    <h2>Зачем это, собственно?</h2>
+    <div class="post">
+        <h1>
+            Python + YAML
+        </h1>
+        <h2>Зачем это, собственно?</h2>
+
 <p>Для конфигов. Писать конфиги на питоне и импортить, на мой взгляд, лучший вариант. Но это не всегда удобно. Типичный пример: нужно загрузить конфиг из родительской папки. Вариант решения - не импортить, хранить в текстовом формате, читать и парсить.
 Конечно, хочется парсить автоматом. Да ещё, чтобы сам конфиг был читабельным. Варианты:</p>
+
 <ul>
 <li>XML: избыточный синтаксис, неудобный парсинг</li>
 <li>INI: ConfigParser - это просто пиздец, наследие винды, не иначе</li>
@@ -29,22 +33,32 @@
 <li>JSON: почти хорошо, но кое-чего нет и синтаксис немного избыточен</li>
 <li>YAML: наш победитель :)</li>
 </ul>
+
 <p>По сути yaml - это расширение json. Или json подмножество yaml :)</p>
+
 <h2>Как это работает</h2>
+
 <p>Для начала ставим пакет:</p>
+
 <pre><code>pip install pyyaml
 </code></pre>
+
 <p>А дальше всё стандартно:</p>
+
 <pre><code>&gt;&gt;&gt; import yaml
 &gt;&gt;&gt; yaml.load('[1, a, false]')  # парсим yaml-строку
 [1, 'a', False]
 &gt;&gt;&gt; yaml.dump([2, 'b', None])  # дампим в yaml-строку
 '[2, b, null]\n'
 </code></pre>
-<p>Можно парсить данные прямо из файла:</p>
+
+<p>Можно парсить данные прямо из файла: </p>
+
 <pre><code>cfg = yaml.load(open('test.yaml'))
 </code></pre>
+
 <p>Например, из такого файла test.yaml:</p>
+
 <pre><code># Простые типы, а это камент, кстати :)
 word: Строка    # без кавычек удобно
 num: 2009       # число
@@ -93,7 +107,9 @@ langs:
         использование: святая простота
         назначение: конфиги
 </code></pre>
+
 <p>Получится такая структура данных:</p>
+
 <pre><code>{
     'word' : u'Строка',
     'num'  : 2009,
@@ -124,13 +140,15 @@ langs:
 }
 </code></pre>
 
-    <div class="signature">
-        22.12.2009
-        
+        <div class="signature">
+            22.12.2009
+            
+        </div>
     </div>
-</div>
 
-<div id="disqus_thread"></div>
+    
+
+    <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
     var url = 'http://imbolc.name/2009/12/python-yaml.html';
@@ -176,8 +194,12 @@ var disqus_config = function () {
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/9940465" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
+        
+    
         <link rel="stylesheet" href="/highlight/github.css?v=3c042">
         <script src="/highlight/highlight.pack.js?v=6efdd"></script>
         <script>hljs.initHighlightingOnLoad();</script>
+    
+
     </body>
 </html>
