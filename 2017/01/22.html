@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Проверка телепатии</title>
+        <link rel="shortcut icon" href="/favicon.ico?v=a9827">
+        <link href="/style.css?v=7fcb6" rel="stylesheet">
+        <link rel="alternate" type="application/rss+xml" href="/feeds/posts/default" title="imbolc.name">
+    </head>
+    <body>
+        <div>
+            <a href="/">home</a>
+            <a style="float: right" href="/feeds/posts/default">rss</a>
+        </div>
+
+        <div>
+            
+    <div class="post">
+        <h1>
+            Проверка телепатии
+        </h1>
+        <p>В эксперементе участвуют два человека Транслятор и Принимающий, они должны быть
+хорошо знакомы друг с другом. Они договариваются какую из пар картинок представленных
+ниже будут использовать в ходе опыта.</p>
+
+<ul>
+<li>Т и П садятся на некотором расстоянии спиной друг к другу</li>
+<li>П закрывает глаза</li>
+<li>Т нажимает на кнопку начала опыта</li>
+<li>на экране появляется случайная каритка из выбранной пары и раздаётся звук</li>
+<li>задача Т просто смотреть на картинку</li>
+<li>задача П, услышав звук, попытаться угадать, что видит Т</li>
+<li>П озвучивает свою догадку</li>
+<li>eсли догадка верна, T нажимает <code>1</code>, если не верна <code>0</code></li>
+</ul>
+
+<p>Результат и история текущей сессии отображаются ниже на странице.</p>
+
+<p>Вариант опыта с обратной связью: после оглашения догадки Т говорит П верна она
+или нет.</p>
+
+<p><em>Не стесняйтесь делиться результатами в комментариях.</em></p>
+
+<p><style>
+    .pairs {display: inline-block; border: 2px solid white; margin: 10px;}
+    .pairs:hover {border: 2px dashed green}
+    .pairs img {width: 50px; height: 50px;}
+    .pairs.selected {border: 2px solid green}
+    .selectedPair img, .curPic {width: 250px; height: 250px;}
+    .curPic { display: block; margin: auto; }
+    .red {color: red}
+    .green {color: green}
+    button {font-size: 120%}
+</style>
+<audio id="beep">
+    <source src="/telepathy/next.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio></p>
+
+<div id="app">
+    <div v-show="!started">
+        <h2>Выберите пару картинок</h2>
+        <div v-for="pair in pairs"
+            @click="selectPair(pair)"
+            class="pairs"
+            :class="{selected: selectedPair == pair}"
+        >
+            <img style="float: left;" :src="'/telepathy/' + pair[0]">
+            <img :src="'/telepathy/' + pair[1]">
+            <div style="clear: both"></div>
+        </div>
+        <div v-if="selectedPair" class="selectedPair">
+            <img style="float: left;" :src="'/telepathy/' + selectedPair[0]">
+            <img :src="'/telepathy/' + selectedPair[1]">
+            <p>
+                Займите позиции и нажмите кнопку
+                <button @click="start">Поехали (Enter)</button>
+            </p>
+        </div>
+    </div>
+    <div v-if="started">
+        <div style="text-align: center">
+            <h2>Сосредоточтесь на картинке</h2>
+            <img class="curPic" :src="'/telepathy/' + curPicture">
+            <button @click="guess(true)" class="green">
+                Догадка верна (1)</button>
+            <button @click="guess(false)" class="red">
+                Не верна (0)</button>
+            <button @click="guess(null)">Пропустить</button>
+            <button @click="restart()">Сначала</button>
+        </div>
+        <div>
+            <h2>Результат</h2>
+            <table>
+                <tr><td>Совпало</td><td class="green">{{ result.right }}</td>
+                <tr><td>Мимо</td><td class="red">{{ result.wrong }}</td>
+            </table>
+
+            <table>
+                <tr v-for="entry in log">
+                    <td>
+                        <img
+                            style="float: left; width: 25px; height: 25px;"
+                            :src="'/telepathy/' + entry[0]">
+                    </td>
+                    <td>{{ entry[1] ? 'совпало' : 'мимо' }}</td>
+                    <div class="clear:both"></div>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+        <div class="signature">
+            22.01.2017
+            , Krasnoyarsk, Russia
+        </div>
+    </div>
+
+    
+        <script src="/js/vue.js?v=400c1"></script>
+    
+        <script src="/js/telepathy.js?v=7f6e1"></script>
+    
+
+    <div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+    var url = 'http://imbolc.name/2017/01/22.html';
+    this.page.url = url;
+    this.page.identifier = url;
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//imbolc.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+        </div>
+
+        <script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter9940465 = new Ya.Metrika({
+                    id:9940465,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/9940465" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+        
+    
+
+    </body>
+</html>
