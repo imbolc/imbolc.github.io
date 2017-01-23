@@ -13,11 +13,12 @@
             selectedPair: null,
             started: false,
             log: [],
-            curPicture: null
+            curPicture: null,
+            showCurPic: true
 
         },
 		created: function () {
-			window.addEventListener('keyup', this.keyUp);
+			window.addEventListener('keydown', this.keyDown);
 		},
         methods: {
             selectPair: function (pair) {
@@ -36,8 +37,13 @@
             nextTurn: function () {
                 var picNum = Math.round(Math.random());
                 this.curPicture = this.selectedPair[picNum];
+                this.showCurPic = false;
                 beep.load();
-                beep.play();
+                var self = this;
+                Vue.nextTick(function () {
+                    self.showCurPic = true;
+                    beep.play();
+                });
             },
             restart: function () {
                 if (confirm('Начать сначала?')) {
@@ -45,17 +51,20 @@
                     this.log = [];
                 }
             },
-            keyUp: function (e) {
+            keyDown: function (e) {
                 if (this.started) {
-                    if (e.key === '1') {
+                    if (e.key === '1' | e.key === 'Enter') {
                         this.guess(true);
+                        e.preventDefault();
                     }
-                    if (e.key === '0') {
+                    if (e.key === '0' | e.key === ' ') {
                         this.guess(false);
+                        e.preventDefault();
                     }
                 } else {
                     if (e.key === 'Enter') {
                         this.start();
+                        e.preventDefault();
                     }
                 }
             },

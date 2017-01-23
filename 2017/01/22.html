@@ -49,7 +49,11 @@
     .pairs img {width: 50px; height: 50px;}
     .pairs.selected {border: 2px solid green}
     .selectedPair img, .curPic {width: 250px; height: 250px;}
-    .curPic { display: block; margin: auto; }
+    .curPic { display: block; margin: auto; animation: fadein 1s; }
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
     .red {color: red}
     .green {color: green}
     button {font-size: 120%}
@@ -83,13 +87,19 @@
     <div v-if="started">
         <div style="text-align: center">
             <h2>Сосредоточтесь на картинке</h2>
-            <img class="curPic" :src="'/telepathy/' + curPicture">
+            <div>
+                <button style="float:left" @click="guess(null)">Пропустить</button>
+                <button style="float: right" @click="restart()">Сначала</button>
+            </div>
+            <img class="curPic"
+                v-if="showCurPic"
+                :src="'/telepathy/' + curPicture">
+            <br>
             <button @click="guess(true)" class="green">
-                Догадка верна (1)</button>
+                Догадка верна (1, Enter)</button>
             <button @click="guess(false)" class="red">
-                Не верна (0)</button>
-            <button @click="guess(null)">Пропустить</button>
-            <button @click="restart()">Сначала</button>
+                Не верна (0, Space)</button>
+            <br>
         </div>
         <div>
             <h2>Результат</h2>
@@ -122,7 +132,7 @@
     
         <script src="/js/vue.js?v=400c1"></script>
     
-        <script src="/js/telepathy.js?v=7f6e1"></script>
+        <script src="/js/telepathy.js?v=80df4"></script>
     
 
     <div id="disqus_thread"></div>
